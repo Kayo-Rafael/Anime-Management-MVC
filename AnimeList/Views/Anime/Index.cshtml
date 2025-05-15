@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<AnimeModel>
+@{
     ViewData["Title"] = "Animes";
 }
 
@@ -15,50 +16,35 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
+                <th scope="col">Usuario</th>
                 <th scope="col">Anime Preferido</th>
-                <th scope="col"></th>
+                <th scope="col">Genero</th>
+                <th scope="col">Criador</th>
+                <th scope="col">Ano de Lançamento</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Otavio</td>
-                <td>otavio@gmail.com</td>
-                <td>Attack On Titan</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Anime" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Anime" asp-action="ExcluirConfirmacao">Excluir</a>
-                    </div>
-                </td>
+            @if(Model != null && Model.Any())
+            {
+                foreach(AnimeModel anime in Model)
+                {
+                    <tr>
+                        <th scope="row">@anime.Id</th>
+                        <td>@anime.Usuario</td>
+                        <td>@anime.NomeAnime</td>
+                        <td>@anime.Genero</td>
+                        <td>@anime.Criador</td>
+                        <td>@anime.AnoLancamento</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@anime.Id" asp-controller="Anime" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@anime.Id" asp-controller="Anime" asp-action="ExcluirConfirmacao">Excluir</a>
+                            </div>
+                        </td>
 
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Kayo</td>
-                <td>kayo@gmail.com</td>
-                <td>Naruto</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Anime" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Anime" asp-action="ExcluirConfirmacao">Excluir</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Vini</td>
-                <td>vini@gmail.com</td>
-                <td>One Piece</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Anime" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Anime" asp-action="ExcluirConfirmacao">Excluir</a>
-                    </div>
-                </td>
-            </tr>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
 </div>
