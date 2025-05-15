@@ -22,20 +22,36 @@ public class AnimeController : Controller
         return View();
     }
 
-    public IActionResult Editar()
+    public IActionResult Editar(int id)
     {
-        return View();
+        AnimeModel anime = _animeRepository.BuscarPorId(id);
+        return View(anime);
     }
 
-    public IActionResult ExcluirConfirmacao()
+    public IActionResult ExcluirConfirmacao(int id)
     {
-        return View();
+        AnimeModel anime = _animeRepository.BuscarPorId(id);
+        return View(anime);
+    }
+
+    public IActionResult ConfirmarExclusao(int id)
+    {
+        _animeRepository.ExcluirAnime(id);
+        return RedirectToAction("Index");
     }
 
     [HttpPost]
     public IActionResult Criar(AnimeModel anime)
     {
         _animeRepository.Adicionar(anime);
+
+        return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public IActionResult Editar(AnimeModel anime)
+    {
+        _animeRepository.EditarAnime(anime);
 
         return RedirectToAction("Index");
     }

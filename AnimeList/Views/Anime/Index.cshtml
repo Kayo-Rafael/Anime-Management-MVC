@@ -1,16 +1,16 @@
 ﻿@model List<AnimeModel>
 @{
-    ViewData["Title"] = "Animes";
+    ViewData["Title"] = "Usuarios";
 }
 
 <div class="text-center">
 
     <div class="d-grip gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-warning" role="button" asp-controller="Anime" asp-action="Criar">Adicionar Anime</a>
+        <a class="btn btn-warning" role="button" asp-controller="Anime" asp-action="Criar">Adicionar Usuario</a>
     </div>
     <br />
 
-    <h1 class="display-4">Lista De Animes</h1>
+    <h1 class="display-4">Lista De Usuarios</h1>
 
     <table class="table">
         <thead>
@@ -41,7 +41,6 @@
                                 <a role="button" class="btn btn-danger" asp-route-id="@anime.Id" asp-controller="Anime" asp-action="ExcluirConfirmacao">Excluir</a>
                             </div>
                         </td>
-
                     </tr>
                 }
             }
