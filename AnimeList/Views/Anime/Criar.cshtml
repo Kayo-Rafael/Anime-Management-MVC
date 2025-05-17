@@ -1,10 +1,10 @@
 ﻿@model AnimeModel
 @{
-	ViewData["Title"] = "Criar Anime";
+	ViewData["Title"] = "Cadastrar Usuario";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Adicionar novo Anime</h1>
+    <h1 class="display-4">Cadastrar novo Usuario</h1>
 </div>
 
 <form asp-controller="Anime" asp-action="Criar" method="post">
@@ -12,11 +12,13 @@
     <div class="form-group">
         <label for="nome">Nome Usuario</label>
         <input type="text" asp-for="Usuario" class="form-control" placeholder="Digite o seu nome"/>
+		@Html.ValidationMessageFor(x => x.Usuario)
     </div>
 
     <div class="form-group">
         <label for="nome">Nome Anime Preferido</label>
         <input type="text" asp-for="NomeAnime" class="form-control" placeholder="Digite o nome do anime"/>
+        @Html.ValidationMessageFor(x => x.NomeAnime)
     </div>
 
     <div class="form-group">
@@ -27,11 +29,13 @@
     <div class="form-group">
         <label for="criador">Criador</label>
         <input type="text" asp-for="Criador" class="form-control" placeholder="Digite o criador ou estúdio" />
+        @Html.ValidationMessageFor(x => x.Criador)
     </div>
 
     <div class="form-group">
         <label for="anoLancamento">Ano de Lançamento</label>
         <input type="number" asp-for="AnoLancamento" class="form-control" placeholder="Digite o ano de lançamento" min="1950" max="2100" />
+        @Html.ValidationMessageFor(x => x.AnoLancamento)
     </div>
 
     <button type="submit" class="btn btn-primary w-100 mt-3">Adicionar</button>

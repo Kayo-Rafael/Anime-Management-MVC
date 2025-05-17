@@ -36,23 +36,63 @@ public class AnimeController : Controller
 
     public IActionResult ConfirmarExclusao(int id)
     {
-        _animeRepository.ExcluirAnime(id);
-        return RedirectToAction("Index");
+        try
+        {
+            bool excluidoComSucesso = _animeRepository.ExcluirAnime(id);
+
+            if (excluidoComSucesso)
+            {
+                TempData["MensagemSucesso"] = "Usuario excluido com sucesso!";
+                return RedirectToAction("Index");
+            }
+            
+            return RedirectToAction("Index");
+        }
+        catch (Exception erro)
+        {
+            TempData["MensagemErro"] = $"Não foi possivel excluir o usuario, Detalhe do erro {erro.Message}";
+            return RedirectToAction("Index");
+        }       
     }
 
     [HttpPost]
     public IActionResult Criar(AnimeModel anime)
     {
-        _animeRepository.Adicionar(anime);
+        try
+        {
+            if (ModelState.IsValid)
+            {
+                _animeRepository.Adicionar(anime);
+                TempData["MensagemSucesso"] = "Usuario adicionado com sucesso!";
+                return RedirectToAction("Index");
+            }
 
-        return RedirectToAction("Index");
+            return View(anime);
+        }
+        catch (Exception erro)
+        {
+            TempData["MensagemErro"] = $"Usuario não foi adicionado com sucesso, tente novamente! Detalhe do erro {erro.Message}";
+            return RedirectToAction("Index");
+        }
     }
 
     [HttpPost]
     public IActionResult Editar(AnimeModel anime)
     {
-        _animeRepository.EditarAnime(anime);
-
-        return RedirectToAction("Index");
+        try
+        {
+            if (ModelState.IsValid)
+            {
+                _animeRepository.EditarAnime(anime);
+                TempData["MensagemSucesso"] = "Usuario Alterado com sucesso!";
+                return RedirectToAction("Index");
+            }
+            return View(anime);
+        }
+        catch (Exception erro)
+        {
+            TempData["MensagemErro"] = $"Erro ao alterar Usuario, Detalhe do erro: {erro.Message}";
+            return RedirectToAction("Index");
+        }
     }
 }

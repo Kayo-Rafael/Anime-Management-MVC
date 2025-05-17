@@ -13,5 +13,6 @@ public class AnimeModel
     [Required(ErrorMessage = "O Nome de Criador é Obrigatorio")]
     public string Criador { get; set; } = string.Empty;
     [Required(ErrorMessage = "A Data de lançamento é Obrigatoria")]
+    [RegularExpression(@"^[0-9]+$", ErrorMessage = "Apenas números são permitidos.")]
     public int AnoLancamento { get; set; }
 }
