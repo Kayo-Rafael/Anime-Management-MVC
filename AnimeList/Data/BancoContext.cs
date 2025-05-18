@@ -1,7 +1,7 @@
-﻿using AnimeList.Models;
+﻿using AnimeUserManager.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AnimeList.Data;
+namespace AnimeUserManager.Data;
 
 public class BancoContext : DbContext
 {
@@ -9,5 +9,5 @@ public class BancoContext : DbContext
     {
 
     }
-    public DbSet<AnimeModel> Animes { get; set; }
+    public DbSet<UserModel> Users { get; set; }
 }

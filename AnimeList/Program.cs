@@ -1,6 +1,5 @@
-using AnimeList.Data;
-using AnimeList.Repositorio;
-using AnimeList.repository;
+using AnimeUserManager.Data;
+using AnimeUserManager.repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BancoContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IAnimeRepository, AnimeRepository>();
+builder.Services.AddScoped<IUsuarioRepository, Usuario>();
 
 builder.Services.AddControllersWithViews();
 

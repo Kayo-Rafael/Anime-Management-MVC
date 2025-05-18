@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using AnimeList.Models;
+using AnimeUserManager.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AnimeList.Controllers
+namespace AnimeUserManager.Controllers
 {
     public class HomeController : Controller
     {
