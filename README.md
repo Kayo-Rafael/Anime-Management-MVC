@@ -2,6 +2,7 @@ AnimeUserManager 🎮📺
 Um projeto ASP.NET Core MVC para gerenciar usuários e seus animes favoritos, com CRUD completo e confirmação de exclusão.
 
 📋 Funcionalidades
+
 ✅ Cadastrar usuários com:
 
 Nome do usuário
@@ -30,17 +31,23 @@ Entity Framework Core (SQL Server)
 Bootstrap 5 (design responsivo)
 
 🚀 Como Executar
+
 📥 Clone o repositório
+
 git clone https://github.com/seu-usuario/AnimeUserManager.git
 
 Configure o banco de dados:
+
 Edite a ConnectionString em appsettings.json.
 
 Execute as migrations:
+
 dotnet ef database update
 
 ⚡ Inicie o projeto
+
 dotnet run
 
 Acesse:
+
 🌐https://localhost:5001
